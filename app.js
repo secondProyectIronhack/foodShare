@@ -126,8 +126,7 @@ app.use( (req, res, next) => {
 
 app.use('/', index);
 app.use('/', authRoutes);
-//app.use('/campaigns', campaignRoutes);
-//app.use('/', rewardRoutes);
+app.use('/foods', foodRoutes);
 
 
 // catch 404 and forward to error handler
