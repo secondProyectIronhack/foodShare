@@ -1,3 +1,5 @@
+/*jshint esversion: 6*/
+
 const express  = require('express');
 const Food = require('../models/food');
 const router   = express.Router();
@@ -5,25 +7,29 @@ const { ensureLoggedIn }  = require('connect-ensure-login');
 const {authorizeFood, checkOwnership} = require('../middleware/food-authorization');
 
 router.get('/new', (req, res) => {
-  res.render('foods/new', { types: TYPES });
+  res.render('cookFood/new');
 });
 
-router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
-  const newFood = new Food({
-    name: req.body.name,
-    maxNumberOfDiners: req.body.maxNumberOfDiners,
-    description: req.body.description,
-    numberOfDiners: req.body.numberOfDiners,
-    ingredients: req.body.ingredients,
-    date: req.body.date,
-    _creator: req.user._id
-  });
-
-  newFood.save( (err) => {
+router.post('/new', (req, res, next) => {
+  const { name, maxNumberOfDiners, description, ingredients, date} = req.body;
+   //_creator: req.user._id
+console.log("HOLA CARACOLA")
+   const foodSubmission = {
+     name: name,
+     maxNumberOfDiners: maxNumberOfDiners,
+     description: description,
+     ingredients: ingredients,
+     date: date
+   };
+  const theFood = new Food(foodSubmission);
+  theFood.save( (err) => {
     if (err) {
-      res.render('foods/new', {err, food: newFood});
+      res.render('/new');
+      return;
     } else {
-      res.redirect(`/foods/${newFood._id}`);
+      console.log("hola");
+      //res.redirect(`/${newFood._id}`);
+      res.redirect('/new');
     }
   });
 });
