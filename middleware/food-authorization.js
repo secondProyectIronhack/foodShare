@@ -1,3 +1,5 @@
+/*jshint esversion: 6*/
+
 const Food = require('../models/food.js');
 
 function authorizeFood(req, res, next){
@@ -31,4 +33,4 @@ function checkOwnership(req, res, next){
 module.exports = {
   authorizeFood,
   checkOwnership
-};  
+};

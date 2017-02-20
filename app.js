@@ -1,3 +1,4 @@
+/*jshint esversion: 6*/
 
 const express            = require('express');
 const path               = require('path');
@@ -11,23 +12,23 @@ const passport           = require('passport');
 const session            = require('express-session');
 const MongoStore         = require('connect-mongo')(session);
 const authRoutes         = require('./routes/authentication.js');
-const foodRoutes     = require('./routes/foods');
+const foodRoutes         = require('./routes/foods');
 const index              = require('./routes/index');
 //const rewardRoutes       = require('./routes/rewards');
-
 const LocalStrategy      = require('passport-local').Strategy;
 const User               = require('./models/user');
 const bcrypt             = require('bcrypt');
-
 
 mongoose.connect('mongodb://localhost:27017/shareFood-development');
 
 
 const app = express();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main-layout');
+
 app.use(expressLayouts);
 
 
@@ -37,15 +38,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/bower_components', express.static(path.join(__dirname, 'bower_components/')))
+app.use('/bower_components', express.static(path.join(__dirname, 'bower_components/')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*app.use(session({
+app.use(session({
   secret: 'ironfundingdev',
   resave: false,
   saveUninitialized: true,
   store: new MongoStore( { mongooseConnection: mongoose.connection })
-}));*/
+}));
 
 
 passport.serializeUser((user, cb) => {
@@ -62,11 +63,11 @@ passport.deserializeUser((id, cb) => {
 // Signing Up
 passport.use('local-signup', new LocalStrategy(
   { passReqToCallback: true },
-  (req, username, password, next) => {
+  (req, name, password, next) => {
     // To avoid race conditions
     process.nextTick(() => {
         User.findOne({
-            'username': username
+            'name': name
         }, (err, user) => {
             if (err){ return next(err); }
 
@@ -74,10 +75,10 @@ passport.use('local-signup', new LocalStrategy(
                 return next(null, false);
             } else {
                 // Destructure the body
-                const { username, email, password } = req.body;
+                const { name, email, password } = req.body;
                 const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
                 const newUser = new User({
-                  username,
+                  name,
                   email,
                   password: hashPass,
                   foodToCook: [],
@@ -94,13 +95,13 @@ passport.use('local-signup', new LocalStrategy(
     });
 }));
 
-passport.use('local-login', new LocalStrategy((username, password, next) => {
-  User.findOne({ username }, (err, user) => {
+passport.use('local-login', new LocalStrategy((name, password, next) => {
+  User.findOne({ name }, (err, user) => {
     if (err) {
       return next(err);
     }
     if (!user) {
-      return next(null, false, { message: "Incorrect username" });
+      return next(null, false, { message: "Incorrect name" });
     }
     if (!bcrypt.compareSync(password, user.password)) {
       return next(null, false, { message: "Incorrect password" });
@@ -115,12 +116,14 @@ app.use(passport.session());
 
 
 
-app.use( (req, res, next) => {
-  if (typeof(req.user) !== "undefined"){
-    res.locals.userSignedIn = true;
+app.use((req, res, next) => {
+  if (req.session.currentUser) {
+    res.locals.currentUserInfo = req.session.currentUser;
+    res.locals.isUserLoggedIn = true;
   } else {
-    res.locals.userSignedIn = false;
+    res.locals.isUserLoggedIn = false;
   }
+
   next();
 });
 
