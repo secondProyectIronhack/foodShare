@@ -11,7 +11,7 @@ const passport           = require('passport');
 const session            = require('express-session');
 const MongoStore         = require('connect-mongo')(session);
 const authRoutes         = require('./routes/authentication.js');
-//const campaignRoutes     = require('./routes/campaigns');
+const foodRoutes     = require('./routes/foods');
 const index              = require('./routes/index');
 //const rewardRoutes       = require('./routes/rewards');
 

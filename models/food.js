@@ -9,9 +9,8 @@ const FoodSchema = new Schema({
     numberOfDiners: Number,
     description: String,
     ingredients: String
-    _creator      : { type: Schema.Types.ObjectId, ref: 'User', required: true },
-
+   //_creator      : { type: Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
-const Fodd = mongoose.model('Food', UserSchema);
+const Food = mongoose.model('Food', FoodSchema);
 module.exports = Food;

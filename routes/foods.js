@@ -21,7 +21,7 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
 
   newFood.save( (err) => {
     if (err) {
-      res.render('foods/new', {err, food: newFood);
+      res.render('foods/new', {err, food: newFood});
     } else {
       res.redirect(`/foods/${newFood._id}`);
     }
@@ -41,7 +41,7 @@ router.get('/:id', checkOwnership, (req, res, next) => {
 
 router.get('/:id/edit', [
     ensureLoggedIn('/login'),
-    authorizefood
+    authorizeFood
   ], (req, res, next) => {
   food.findById(req.params.id, (err, food) => {
     if (err)       { return next(err) }
