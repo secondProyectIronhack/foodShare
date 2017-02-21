@@ -5,14 +5,18 @@ const Food = require('../models/food');
 const router   = express.Router();
 const { ensureLoggedIn }  = require('connect-ensure-login');
 const {authorizeFood, checkOwnership} = require('../middleware/food-authorization');
-
+const User = require('../models/user');
 router.get('/new', (req, res) => {
   res.render('cookFood/new');
 });
 
+router.get('/show', (req,res) => {
+  res.render('cookFood/show');
+})
+
 router.post('/new', (req, res, next) => {
-  const { name, maxNumberOfDiners, description, ingredients, date} = req.body;
-    console.log(req.session.currentUser._id)
+  const { name, maxNumberOfDiners, description, ingredients, date,location} = req.body;
+    console.log(req.session.currentUser._id);
 
    const foodSubmission = {
      name: name,
@@ -20,9 +24,12 @@ router.post('/new', (req, res, next) => {
      description: description,
      ingredients: ingredients,
      date: date,
-     _creator: req.session.currentUser._id
-
+     _creator: req.session.currentUser._id,
+     location:location 
    };
+
+   req.session.currentUser.foodToCook.push()
+
    if(name === ''){
      res.render('cookFood/new', {errorMessage:'Name of food required'});
    }
@@ -41,11 +48,17 @@ router.post('/new', (req, res, next) => {
       res.render('cookFood/new');
       return;
     } else {
-     console.log("ERROR")
+        //req.session.currentUser.foodToCook.push(newFood._id).update((err)=>{
+          User.updateOne(
+            { _id: req.session.currentUser._id },
+            { $push: { "foodToCook": theFood._id }}, function(err, user){
+              if (err) return next(err);
+              res.redirect('/');
+            }
+          );
         //res.redirect(`/${newFood._id}`);
-      res.redirect('/');
-    }
-  });
+      }
+  })
 });
 
 router.get('/:id', checkOwnership, (req, res, next) => {

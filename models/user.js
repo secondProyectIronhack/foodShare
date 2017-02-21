@@ -8,8 +8,8 @@ const UserSchema = new Schema({
     email:       {type: String, required :true},
     password:    {type: String, required: true},
     //imgUrl:      { type: String, default: "" },
-    foodToCook:  [ { type: Schema.Types.ObjectId,  ref: 'Food' } ],
-    foodToEat:   [{ type: Schema.Types.ObjectId,  ref: 'Food' } ]
+    foodToCook:  [],
+    foodToEat:   []
 });
 
 const User = mongoose.model('User', UserSchema);
