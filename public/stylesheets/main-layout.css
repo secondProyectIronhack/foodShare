@@ -1,0 +1,12 @@
+.navItem{
+    color:white !important;
+}
+
+nav > *{
+  background-color: #337ab7;
+  border-color: #337ab7 !important;
+}
+
+nav{
+  border-color: #337ab7 !important;
+}

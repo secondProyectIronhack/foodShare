@@ -77,6 +77,10 @@ router.post('/:id', [
   });
 });
 
+router.get('/show', (req, res) => {
+  res.render('cookFood/show');
+});
+
 
 
 module.exports = router;
