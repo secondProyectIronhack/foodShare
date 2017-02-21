@@ -5,6 +5,25 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>List of Foods</h1>
+
+   <% listOfFoods.forEach(function(food) { %>
+        <div class="recipe">
+          <p class="food"> Name: <%= food.name %></p>
+          <p class="maxNumberOf"> MaxNumberofdiners: <%= food.maxNumberOfDiners %></p>
+          <p class="alctual-diners"> Actual Diners: Hacer query</p>
+          <p class="date"> Date: <%= food.date %></p>
+          <p class="description"> Description: <%= food.description %></p>
+          <p class="ingredients"> Ingredients: <%= food.ingredients %></p>
+          <button class="<%=food._id%>" type="submit">Add</button>
+       </div>
+       </a>
+    <% }); %>
+</ul>
+
+ <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+ <script src="javascripts/main.js"></script>
 </body>
 </html>
