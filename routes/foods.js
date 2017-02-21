@@ -12,24 +12,38 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res, next) => {
   const { name, maxNumberOfDiners, description, ingredients, date} = req.body;
-   //_creator: req.user._id
-console.log("HOLA CARACOLA")
+    console.log(req.session.currentUser._id)
+
    const foodSubmission = {
      name: name,
      maxNumberOfDiners: maxNumberOfDiners,
      description: description,
      ingredients: ingredients,
-     date: date
+     date: date,
+     _creator: req.session.currentUser._id
+
    };
+   if(name === ''){
+     res.render('cookFood/new', {errorMessage:'Name of food required'});
+   }
+   if(maxNumberOfDiners === ''){
+     res.render('cookFood/new', {errorMessage:'Max Number of diners required'});
+   }
+   if(date === ''){
+     res.render('cookFood/new', {errorMessage:'Date required'});
+   }
+
+
+   
   const theFood = new Food(foodSubmission);
   theFood.save( (err) => {
     if (err) {
-      res.render('/new');
+      res.render('cookFood/new');
       return;
     } else {
-      console.log("hola");
-      //res.redirect(`/${newFood._id}`);
-      res.redirect('/new');
+     console.log("ERROR")
+        //res.redirect(`/${newFood._id}`);
+      res.redirect('/');
     }
   });
 });

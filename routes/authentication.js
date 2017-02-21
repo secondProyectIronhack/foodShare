@@ -10,7 +10,7 @@ const User = require('../models/user');
 
 router.get('/signup', (req, res, next) => {
   res.render('authentication/signup', {
-    errorMessage: ''
+    errorMessage: 'ERROR'
   });
 });
 
