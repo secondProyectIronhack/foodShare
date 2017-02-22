@@ -105,8 +105,8 @@ router.post('/add-food',(req,res,next) => {
             if (err){
               return next(err);
             }else{
-              console.log("NO hay error")
-              return res.redirect('/');
+              console.log("NO hay error");
+              
             }
           }
         );
