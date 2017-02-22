@@ -1,30 +1,76 @@
-<h2> Log In </h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
 
-<% if (errorMessage) { %>
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href='/stylesheets/reset.css'>
+    		<!-- Website CSS style -->
+    		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+    		<!-- Website Font style -->
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    		  <link rel="stylesheet" href='/stylesheets/signup.css'>
+    		<!-- Google Fonts -->
+    		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+<div class="background"></div>
+<div class="container">
+  <div class="row-main">
+    <div class="main-login main-center">
+
+      <% if (errorMessage) { %>
   <p class="error-message">
     <%= errorMessage %>
   </p>
 <% } %>
 
-<form action="/login" method="post">
-  <div>
-    <label for="email-input"> Email </label>
-    <input type="email" name="email" id="email-input"
-      placeholder="e.g., xena@warrior.company">
+      <form class="" method="post" action="/login">
+            <h2> Login </h2>
+
+        <div class="form-group">
+          <label for="email-input" class="cols-sm-2 control-label">Your Email</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="email" id="email-input"  placeholder="Enter your Email"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password-input" class="cols-sm-2 control-label">Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="password" id="password-input"  placeholder="Enter your Password"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <button id="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+        </div>
+      </form>
+    </div>
   </div>
+</div>
 
-  <div>
-    <label for="password-input"> Password </label>
-    <input type="password" name="password" id="password-input"
-      placeholder="e.g., ••••••••••••">
-  </div>
 
-  <button> Log In </button>
-</form>
-
-<p>
-  Don't have an account?
-  <a href="/signup">
-    Create an account.
-  </a>
-</p>
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

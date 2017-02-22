@@ -106,10 +106,7 @@ router.post('/add-food',(req,res,next) => {
             if (err){
               return next(err);
             }else{
-              console.log("NO hay error")
-                    return res.status(202).send("updated footToEat  ");
-
-            }
+                return res.status(202).send("updated footToEat");            }
           }
         );
       }
@@ -141,9 +138,6 @@ router.post('/:id', [
   });*/
 });
 
-function addFoodToEatToUser(id,req,res,next){
-  console.log('Ha entrado en addFoodToEatToUser')
 
-}
 
 module.exports = router;
