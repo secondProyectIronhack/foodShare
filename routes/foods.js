@@ -60,7 +60,8 @@ router.post('/new', (req, res, next) => {
             { _id: req.session.currentUser._id },
             { $push: { "foodToCook": theFood._id }}, function(err, user){
               if (err) return next(err);
-              res.redirect('/');
+               res.redirect('/');
+               return;
             }
           );
         //res.redirect(`/${newFood._id}`);
@@ -106,7 +107,8 @@ router.post('/add-food',(req,res,next) => {
               return next(err);
             }else{
               console.log("NO hay error")
-              return res.redirect('/');
+                    return res.status(202).send("updated footToEat  ");
+
             }
           }
         );
