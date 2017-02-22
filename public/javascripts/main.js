@@ -3,6 +3,7 @@
 $(document).ready(function(){
         $("button").on('click',function(event){
         event.preventDefault();
+        console.log("click");
         let foodId = $(this).attr('class');
         console.log(foodId)
         $.ajax({
