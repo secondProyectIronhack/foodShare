@@ -123,29 +123,33 @@ router.post('/add-food',(req,res,next) => {
 })
 
 router.get('/profile', (req,res,next) =>{
-  console.log(req.session.currentUser)
+  //console.log(req.session.currentUser)
   User
   .findOne({_id: req.session.currentUser._id})
   .exec((err,user)=>{
     if(!user){
       return next(err);
     }else{
-      console.log(user)
+      //console.log(user)
       let listOfFoodsToEat = [];
       if(user.foodToEat.length !== 0){
-        user.foodToEat.map((item) =>{
-          Food.find({id: item})
-          .sort({date: -1})
+        listOfFoodsToEat = user.foodToEat.map((item) =>{
+          Food.
+          find({'_id': item})
+          //.sort({'date': -1})
           .exec((err, foods)=>{
-            console.log(foods)
-            listOfFoodsToEat.push(foods);
-            console.log(listOfFoodsToEat)
-          });
+            //listOfFoodsToEat.push(foods);
+          console.log('dentro'+foods);
+         //hay que sacar FOODS PERO FUERA ES UNDEFIND
+         //DENTRO TIENE VALOR PERO FUERA NO
+        });
+        
         }); 
+        console.log('semi'+listOfFoodsToEat)
+        const allFoods = listOfFoodsToEat;
       }
-      console.log('kjdsadjdhfdj')
+        console.log(listOfFoodsToEat);
       res.render('cookFood/profile',{
-        name : user.name,
        listOfFoodsToEat: listOfFoodsToEat
       });
     }
@@ -153,7 +157,7 @@ router.get('/profile', (req,res,next) =>{
   });
 });
 
-router.post('/:id', [
+/*router.post('/:id', [
     ensureLoggedIn('/login'),
     authorizeFood
   ], (req, res, next) => {
@@ -165,7 +169,7 @@ router.post('/:id', [
     ingredients: req.body.ingredients,
     date: req.body.date,
     _creator: req.user._id
-  };
+  };*/
 
 
 
@@ -174,7 +178,7 @@ router.post('/:id', [
     if (!food) { return next(new Error("404")); }
     return res.redirect(`/foods/${food._id}`);
   });*/
-});
+//});
 
 
 
