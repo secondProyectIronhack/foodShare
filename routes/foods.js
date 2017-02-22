@@ -137,7 +137,8 @@ router.get('/profile', (req,res,next) =>{
           Food.find({id: item})
           .sort({date: -1})
           .exec((err, foods)=>{
-            listOfFoodsToEat.add(foods);
+            console.log(foods)
+            listOfFoodsToEat.push(foods);
             console.log(listOfFoodsToEat)
           });
         }); 
@@ -145,7 +146,7 @@ router.get('/profile', (req,res,next) =>{
       console.log('kjdsadjdhfdj')
       res.render('cookFood/profile',{
         name : user.name,
-       listOfFoods:listOfFoodsToEat
+       listOfFoodsToEat: listOfFoodsToEat
       });
     }
     
