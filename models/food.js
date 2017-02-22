@@ -7,11 +7,12 @@ const Schema   = mongoose.Schema;
 const FoodSchema = new Schema({
     name: {type: String, required:true},
     maxNumberOfDiners: {type: Number, required:true},
-    date: Date,
-    numberOfDiners: Number,
+    date: {type: Date, required:true},
+    numberOfDiners: {type: Number, required:true},
     description: String,
-    ingredients: String
-   //_creator      : { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    ingredients: String,
+    _creator: String,
+    location:{type: String, required:true}
 });
 
 const Food = mongoose.model('Food', FoodSchema);
