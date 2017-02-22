@@ -96,15 +96,23 @@ router.post('/add-food',(req,res,next) => {
     if (err){ 
       return next(err);
     }else{
-      console.log(foodPicked);
+//      console.log(foodPicked);
       if(foodPicked.numberOfDiners < foodPicked.maxNumberOfDiners){
         foodPicked.numberOfDiners++;
-        addFoodToEatToUser(foodPicked.id);
+          User.updateOne(
+          { _id: req.session.currentUser._id },
+          { $push: { "foodToEat": foodId }}, function(err, user){
+            if (err){
+              return next(err);
+            }else{
+              console.log("NO hay error")
+              return res.redirect('/');
+            }
+          }
+        );
       }
-      res.status(202).send("eres mongolo");
-
+      return res.status(202).send("eres mongolo");
     }
-
 });
 })
 
@@ -131,14 +139,9 @@ router.post('/:id', [
   });*/
 });
 
-function addFoodToEatToUser(id){
-  User.updateOne(
-    { _id: req.session.currentUser._id },
-    { $push: { "foodToEat": id }}, function(err, user){
-      if (err) return next(err);
-      res.redirect('/');
-    }
-    );
+function addFoodToEatToUser(id,req,res,next){
+  console.log('Ha entrado en addFoodToEatToUser')
+
 }
 
 module.exports = router;
