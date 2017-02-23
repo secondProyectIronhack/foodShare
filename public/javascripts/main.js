@@ -12,8 +12,8 @@ $(document).ready(function(){
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({foodId: foodId}), 
-            success: showFeedback,
-            error: handleError  
+           // success: showFeedback,
+           // error: handleError  
         });
     });
  });
