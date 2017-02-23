@@ -8,6 +8,7 @@ const User = require('../models/user');
 router.get('/new', (req, res) => {
   res.render('cookFood/new');
 });
+
 router.get('/show', (req,res, next) => {
    Food.find({}, function(error,foods){
     if(error){
@@ -19,8 +20,10 @@ router.get('/show', (req,res, next) => {
     }
   });
 })
+
 router.post('/new', (req, res, next) => {
   const { name, maxNumberOfDiners, description, ingredients, date, location} = req.body;
+
    const foodSubmission = {
      name: name,
      maxNumberOfDiners: maxNumberOfDiners,
@@ -41,12 +44,14 @@ router.post('/new', (req, res, next) => {
    if(date === ''){
      res.render('cookFood/new', {errorMessage:'Date required'});
    }
+
   const theFood = new Food(foodSubmission);
   theFood.save( (err) => {
     if (err) {
       res.render('cookFood/new');
       return;
     } else {
+      console.log(theFood);          
           User.updateOne(
             { _id: req.session.currentUser._id },
             { $push: { "foodToCook": theFood._id }}, function(err, user){
@@ -62,7 +67,7 @@ router.post('/new', (req, res, next) => {
 router.post('/add-food',(req,res,next) => {
   let foodId = req.body.foodId;
   Food.findById(foodId, (err, foodPicked)=>{
-    if (err){
+    if (err){ 
       return next(err);
     }else{
        console.log(foodPicked);
@@ -83,6 +88,7 @@ router.post('/add-food',(req,res,next) => {
     }
   });
 })
+
 router.get('/profile-books', (req,res,next) =>{
   //console.log(req.session.currentUser)
   let listOfFoodsToEat = [];
@@ -95,26 +101,26 @@ router.get('/profile-books', (req,res,next) =>{
     }else{
       console.log(user.foodToEat);
       console.log(user.foodToCook);
-      res.render('cookFood/profile',
+      res.render('cookFood/profile', 
       { tittle: 'Your books',
         listOfFoodsToEat: user.foodToEat });
-    }
+    } 
   })
 })
+
 router.get('/profile-cooks', (req,res,next) =>{
   //console.log(req.session.currentUser)
   let listOfFoodsToEat = [];
   User.findOne({_id:req.session.currentUser._id})
   .populate("foodToCook")
-  //.populate("foodToEat")
   .exec((err,user) =>{
     if(!user){
       return next(err);
     }else{
-      res.render('cookFood/profile',
+      res.render('cookFood/profile', 
       { tittle: 'Your cooks',
         listOfFoodsToEat: user.foodToCook });
-    }
+    } 
   })
 })
 
