@@ -3,7 +3,7 @@
   <head>
     <head>
       <meta charset="UTF-8">
-      <title>Meal Sharing</title>
+      <title>Cookeat</title>
       <link rel="stylesheet" href='/stylesheets/reset.css'>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -26,22 +26,40 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand navItem" href="/">Meal Sharing</a>
+          <a class="navbar-brand navItem" href="/">Cookeat</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a class= "navItem" href="/signup">Signup</a></li>
-            <li><a class= "navItem" href="/login">Login</a></li>
-            <li><a class= "navItem" href="/">Logout</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
 
+          <ul class="nav navbar-nav navbar-right">
+
+
+
+              <% if (!isUserLoggedIn) { %>
+              <li><a class= "navItem" href="/signup">Sign up</a></li>
+              <li><a class= "navItem" href="/login">Login</a></li>
+              <% } else { %>
+              <li><a class= "navItem"> Hello, <%= currentUserInfo.name %> ! </a></li>
+              <li><div class="dropdown">
+                <button class="dropbtn navItem">Profile</button>
+                <div class="dropdown-content">
+                  <a href="/profile-cooks">Your menus</a>
+                  <a href="/profile-books">Your reserves</a>
+                  <a href="/new">Create a menu</a>
+                </div>
+              </div></li>
+              <li><a class= "navItem" href="/show">See all Menus</a></li>
+              <li><a class= "navItem" href="/logout">Logout</a></li>
+
+              <% } %>
+           </ul>
+
+        </div>
+      </div>
+    </nav>
 
     <div class="main-container">
       <%- body %>

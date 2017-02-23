@@ -1,5 +1,4 @@
 /*jshint esversion: 6*/
-
 const express  = require('express');
 const Food = require('../models/food');
 const router   = express.Router();
@@ -9,7 +8,6 @@ const User = require('../models/user');
 router.get('/new', (req, res) => {
   res.render('cookFood/new');
 });
-
 router.get('/show', (req,res, next) => {
    Food.find({}, function(error,foods){
     if(error){
@@ -21,10 +19,8 @@ router.get('/show', (req,res, next) => {
     }
   });
 })
-
 router.post('/new', (req, res, next) => {
   const { name, maxNumberOfDiners, description, ingredients, date, location} = req.body;
-
    const foodSubmission = {
      name: name,
      maxNumberOfDiners: maxNumberOfDiners,
@@ -36,8 +32,6 @@ router.post('/new', (req, res, next) => {
      numberOfDiners: 0,
    };
    console.log(foodSubmission)
-   //req.session.currentUser.foodToCook.push()
-
    if(name === ''){
      res.render('cookFood/new', {errorMessage:'Name of food required'});
    }
@@ -47,7 +41,6 @@ router.post('/new', (req, res, next) => {
    if(date === ''){
      res.render('cookFood/new', {errorMessage:'Date required'});
    }
-
   const theFood = new Food(foodSubmission);
   theFood.save( (err) => {
     if (err) {
@@ -55,91 +48,74 @@ router.post('/new', (req, res, next) => {
       return;
     } else {
       console.log(theFood);
-        //req.session.currentUser.foodToCook.push(newFood._id).update((err)=>{
           User.updateOne(
             { _id: req.session.currentUser._id },
             { $push: { "foodToCook": theFood._id }}, function(err, user){
               if (err) return next(err);
-              res.redirect('/');
+               res.redirect('/');
+               return;
             }
           );
-        //res.redirect(`/${newFood._id}`);
       }
   })
 });
-
-router.get('/:id', (req, res, next) => {
-  food.findById(req.params.id, (err, food) => {
-    if (err){ return next(err); }
-
-    food.populate('_creator', (err, food) => {
-      if (err){ return next(err); }
-      return res.render('foods/show', { food });
-    });
-  });
-});
-
-router.get('/:id/edit', [
-    ensureLoggedIn('/login'),
-    authorizeFood
-  ], (req, res, next) => {
-  food.findById(req.params.id, (err, food) => {
-    if (err)       { return next(err) }
-    if (!food) { return next(new Error("404")) }
-    return res.render('foods/edit', { food})
-  });
-});
-
 router.post('/add-food',(req,res,next) => {
   let foodId = req.body.foodId;
   Food.findById(foodId, (err, foodPicked)=>{
     if (err){
       return next(err);
     }else{
-//      console.log(foodPicked);
+       console.log(foodPicked);
       if(foodPicked.numberOfDiners < foodPicked.maxNumberOfDiners){
         foodPicked.numberOfDiners++;
           User.updateOne(
           { _id: req.session.currentUser._id },
           { $push: { "foodToEat": foodId }}, function(err, user){
             if (err){
-              return next(err);
+             return next(err);
             }else{
-              console.log("NO hay error");
-              
-            }
+              return res.status(202).send("updated footToEat");            }
           }
         );
-      }
-      return res.status(202).send("eres mongolo");
+      }else{
+       return res.status(202).send("eres mongolo");
     }
-});
+    }
+  });
 })
+router.get('/profile-books', (req,res,next) =>{
+  //console.log(req.session.currentUser)
+  let listOfFoodsToEat = [];
+  User.findOne({_id:req.session.currentUser._id})
+ // .populate("foodToCook")
+  .populate("foodToEat")
+  .exec((err,user) =>{
+    if(!user){
+      return next(err);
+    }else{
+      console.log(user.foodToEat);
+      console.log(user.foodToCook);
+      res.render('cookFood/profile',
+      { tittle: 'Your books',
+        listOfFoodsToEat: user.foodToEat });
+    }
+  })
+})
+router.get('/profile-cooks', (req,res,next) =>{
+  //console.log(req.session.currentUser)
+  let listOfFoodsToEat = [];
+  User.findOne({_id:req.session.currentUser._id})
+  .populate("foodToCook")
+  //.populate("foodToEat")
+  .exec((err,user) =>{
+    if(!user){
+      return next(err);
+    }else{
 
-router.post('/:id', [
-    ensureLoggedIn('/login'),
-    authorizeFood
-  ], (req, res, next) => {
-  const updates = {
-    name: req.body.name,
-    maxNumberOfDiners: req.body.maxNumberOfDiners,
-    description: req.body.description,
-    numberOfDiners: req.body.numberOfDiners,
-    ingredients: req.body.ingredients,
-    date: req.body.date,
-    _creator: req.user._id
-  };
-
-
-
-/*  Food.findByIdAndUpdate(req.params.id, updates, (err, food) => {
-    if (err)       { return res.render('foods/edit', { food, errors: food.errors }); }
-    if (!food) { return next(new Error("404")); }
-    return res.redirect(`/foods/${food._id}`);
-  });*/
-});
-
-
-
-
+      res.render('cookFood/profile',
+      { tittle: 'Your cooks',
+        listOfFoodsToEat: user.foodToCook });
+    }
+  })
+})
 module.exports = router;

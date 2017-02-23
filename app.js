@@ -127,6 +127,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
 app.use('/', index);
 app.use('/', authRoutes);
 app.use('/', foodRoutes);

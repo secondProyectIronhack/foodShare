@@ -1,3 +1,15 @@
+.btn{
+color: #fff !important;
+border: 3px solid #fff !important;
+background: none !important;
+letter-spacing: 1px!important;
+font-size: 20px !important;
+}
+.btn:hover {
+    background-color: white!important;
+    color: black!important;
+
+}
 
 .button-div{
   width:100%;

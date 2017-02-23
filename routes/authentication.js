@@ -8,13 +8,13 @@ const passport = require('passport');
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const User = require('../models/user');
 
-router.get('/signup', (req, res, next) => {
+router.get('/signup', ensureLoggedOut(),(req, res, next) => {
   res.render('authentication/signup', {
     errorMessage: 'ERROR'
   });
 });
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', ensureLoggedOut(),(req, res, next) => {
   const {name, email, password} = req.body;
   if(email === '' || password === ''){
     res.render('authentication/signup', {errorMessage: 'Email or password are required'});
@@ -56,16 +56,16 @@ router.post('/signup', (req, res, next) => {
   });
 });
 
-    // res.redirect('/');
+
 });
 
-router.get('/login', (req, res, next) => {
+router.get('/login', ensureLoggedOut(),(req, res, next) => {
   res.render('authentication/login', {
     errorMessage: ''
   });
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', ensureLoggedOut(), (req, res, next) => {
   const emailInput = req.body.email;
   const passwordInput = req.body.password;
 
@@ -107,7 +107,6 @@ router.get('/logout', (req, res, next) => {
       next(err);
       return;
     }
-
     res.redirect('/');
   });
 });
