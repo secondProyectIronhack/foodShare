@@ -1,9 +1,11 @@
 
 
 .navItem{
-    color:white !important;
-
+    color:white!important;
+    font-size: 17px;
+    top:2px;
 }
+
 
 
 nav > *{
@@ -14,8 +16,17 @@ nav > *{
 
 nav{
   border-color: #337ab7 !important;
-  position: fixed;
+
 }
+.container-fluid{
+position: fixed;
+width: 100%;
+}
+.collapse{
+  float: right;
+  text-align: left;
+}
+
 
 
 /* Dropdown Button */
