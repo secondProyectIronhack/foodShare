@@ -2,6 +2,7 @@
 $(document).ready(function(){
         $("button").on('click',function(event){
         event.preventDefault();
+        console.log("click");
         let foodId = $(this).attr('class');
         console.log(foodId);
         $.ajax({
@@ -10,8 +11,8 @@ $(document).ready(function(){
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({foodId: foodId}),
-            //success: showFeedback,
-            //error: handleError
+           //success: showFeedback,
+           //error: handleError  
         });
     });
  });

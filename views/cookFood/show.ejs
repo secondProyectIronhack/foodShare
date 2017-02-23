@@ -16,8 +16,6 @@
 </head>
 <body>
 
-
-
 <div class="container">
 	<div class="span8">
 
@@ -29,7 +27,6 @@
             <div class="tomas">
 							<div class="borja">
 
-
                <h1 class="food"><%= food.name %></h1>
                <p class="maxNumberOf"> For <%= food.maxNumberOfDiners %> diners</p>
                <!--<p class="alctual-diners"> Actual Diners: Hacer query</p>-->
@@ -37,7 +34,7 @@
                <p class="description"> Description: <%= food.description %></p>
                <p class="ingredients"> Ingredients: <%= food.ingredients %></p>
                <div class="tags">
-               <button class="<%=food._id%> btn-info" type="submit">Add</button>
+               <button class="<%=food._id%>" id="btn-info" type="submit">Add</button>
 							 </div>
                </div>
 

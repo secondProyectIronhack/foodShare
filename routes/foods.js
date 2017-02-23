@@ -47,7 +47,6 @@ router.post('/new', (req, res, next) => {
       res.render('cookFood/new');
       return;
     } else {
-      console.log(theFood);
           User.updateOne(
             { _id: req.session.currentUser._id },
             { $push: { "foodToCook": theFood._id }}, function(err, user){
@@ -59,6 +58,7 @@ router.post('/new', (req, res, next) => {
       }
   })
 });
+
 router.post('/add-food',(req,res,next) => {
   let foodId = req.body.foodId;
   Food.findById(foodId, (err, foodPicked)=>{
@@ -111,11 +111,11 @@ router.get('/profile-cooks', (req,res,next) =>{
     if(!user){
       return next(err);
     }else{
-
       res.render('cookFood/profile',
       { tittle: 'Your cooks',
         listOfFoodsToEat: user.foodToCook });
     }
   })
 })
+
 module.exports = router;

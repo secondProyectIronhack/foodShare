@@ -7,6 +7,11 @@ const bcryptSalt = 10;
 const passport = require('passport');
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const User = require('../models/user');
+const Food = require("../models/food");
+
+
+
+
 
 router.get('/signup', ensureLoggedOut(),(req, res, next) => {
   res.render('authentication/signup', {
@@ -109,7 +114,9 @@ router.get('/logout', (req, res, next) => {
     }
     res.redirect('/');
   });
-});
+}); 
+
+
 
 
 module.exports = router;
