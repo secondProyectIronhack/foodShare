@@ -18,9 +18,10 @@
          <h1 class="food"><%= food.name %></h1>
          <p class="maxNumberOf"> For: <%= food.maxNumberOfDiners %> persons</p>
          <!--<p class="alctual-diners"> Actual Diners: <%= food.maxNumberOfDiners %></p>-->
-         <p class="date"> Date: <%=    food.date %></p>
+         <p class="date"> Date: <%= food.date%></p>
          <p class="description"> Description: <%= food.description %></p>
          <p class="ingredients"> Ingredients: <%= food.ingredients %></p>
+         <p> Address: <%= food.location %></p>
         </div>
         </div>
    <% }); %>
