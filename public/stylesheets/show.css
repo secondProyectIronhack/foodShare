@@ -1,6 +1,6 @@
 .titlediv{
 
-  background-color: #90b7cc;
+  background-color: #badbf2;
   /*border: 6px solid #c8e0f1;*/
   border-radius: 25px;
   padding: 5px;
@@ -66,7 +66,7 @@ body{
 }
 .tomas:hover {
   margin: 10px;
-  background-color: #90b7cc;
+  background-color: #badbf2;
   border-radius: 25px;
   padding: 10px;
   /*height: 330px;*/
