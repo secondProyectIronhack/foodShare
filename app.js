@@ -19,7 +19,7 @@ const LocalStrategy      = require('passport-local').Strategy;
 const User               = require('./models/user');
 const bcrypt             = require('bcrypt');
 
-mongoose.connect('mongodb://localhost:27017/shareFood-development');
+mongoose.connect('mongodb://heroku_r9jxdv2b:k1jbit4pqlpq20elkoq22nvp92@ds157839.mlab.com:57839/heroku_r9jxdv2b');
 
 
 const app = express();
