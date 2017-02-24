@@ -43,7 +43,7 @@ body{
     margin-right:15px;
     text-transform:uppercase;
     display:block;
-    float:left;
+    /*float:left;*/
     background:white!important;
     border-color:white!important;
     color:#337ab7!important;
