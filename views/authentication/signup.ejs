@@ -1,81 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-		<meta charset="UTF-8">
-  <title>Signup</title>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
     <link rel="stylesheet" href='/stylesheets/reset.css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 
-    <script
-    src="https://code.jquery.com/jquery-3.1.1.js"
-    integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href='/stylesheets/signup.css'>
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
+</head>
 
-		<link rel="stylesheet" href='/stylesheets/signup.css'>
-		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
-	</head>
-	<body>
+<body>
 
     <div class="background"></div>
 
-		<div class="container">
-			<div class="row-main">
-				<div class="main-login main-center">
+    <div class="container">
+        <div class="row-main">
+            <div class="main-login main-center">
 
-					<form action="/signup" method="post">
-            <h2> Sign Up </h2>
+                <form action="/signup" method="post">
+                    <h2> Sign Up </h2>
 
-						<div class="form-group">
-							<label for="name-input" class="cols-sm-2 control-label">Your Name</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name-input"  placeholder="Enter your Name"/>
-								</div>
-							</div>
-						</div>
+                    <div class="form-group">
+                        <label for="name-input" class="cols-sm-2 control-label">Your Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name-input" placeholder="Enter your Name" />
+                            </div>
+                        </div>
+                    </div>
 
-						<div class="form-group">
-							<label for="email-input" class="cols-sm-2 control-label">Your Email</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email-input"  placeholder="Enter your Email"/>
-								</div>
-							</div>
-						</div>
+                    <div class="form-group">
+                        <label for="email-input" class="cols-sm-2 control-label">Your Email</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="email" id="email-input" placeholder="Enter your Email" />
+                            </div>
+                        </div>
+                    </div>
 
-						<div class="form-group">
-							<label for="password-input" class="cols-sm-2 control-label">Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password-input"  placeholder="Enter your Password"/>
-								</div>
-							</div>
-						</div>
+                    <div class="form-group">
+                        <label for="password-input" class="cols-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="password" id="password-input" placeholder="Enter your Password" />
+                            </div>
+                        </div>
+                    </div>
 
-						<div class="form-group ">
-							<button href="/" type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-						</div>
-						<p><a href="/login">Have you got an account? click here.</a></p>
+                    <div class="form-group ">
+                        <button href="/" type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    </div>
+                    <p><a href="/login">Have you got an account? click here.</a></p>
 
-					</form>
-
-				</div>
-			</div>
-		</div>
-
-
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-	</body>
+</body>
+
 </html>

@@ -1,37 +1,47 @@
 <html lang="en">
+
 <head>
 
-   <meta charset="UTF-8">
-   <title>Document</title>
-   <link rel="stylesheet" href='/stylesheets/show.css'>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href='/stylesheets/show.css'>
 </head>
+
 <body>
-  <div class="container">
-  	<div class="span8">
-  <div class="titlediv">
-   <h1 id="title"><%=tittle%></h1>
-   </div>
-   <div class="recipe">
-  <% listOfFoodsToEat.forEach(function(food) { %>
-         <div class="tomas">
-         <div class="borja">
-         <h1 class="food"><%= food.name %></h1>
-         <p class="maxNumberOf"> For: <%= food.maxNumberOfDiners %> persons</p>
-         <!--<p class="alctual-diners"> Actual Diners: <%= food.maxNumberOfDiners %></p>-->
-         <p class="date"> Date: <%=    food.date %></p>
-         <p class="description"> Description: <%= food.description %></p>
-         <p class="ingredients"> Ingredients: <%= food.ingredients %></p>
-         <p class="ingredients"> Address: <%= food.location %></p>
+    <div class="container">
+        <div class="span8">
+            <div class="titlediv">
+                <h1 id="title"><%=tittle%></h1>
+            </div>
+            <div class="recipe">
+                <% listOfFoodsToEat.forEach(function(food) { %>
+                    <div class="container1">
+                        <div class="container2">
+                            <h1 class="food"><%= food.name %></h1>
+                            <p class="maxNumberOf"> For:
+                                <%= food.maxNumberOfDiners %> persons</p>
+                            <p class="date"> Date:
+                                <%=    food.date %>
+                            </p>
+                            <p class="description"> Description:
+                                <%= food.description %>
+                            </p>
+                            <p class="ingredients"> Ingredients:
+                                <%= food.ingredients %>
+                            </p>
+                            <p class="ingredients"> Address:
+                                <%= food.location %>
+                            </p>
 
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
         </div>
-        </div>
-   <% }); %>
-   </div>
- </div>
-</div>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script src="javascripts/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="javascripts/main.js"></script>
 </body>
 
 </html>

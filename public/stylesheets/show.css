@@ -53,7 +53,7 @@ body{
     float:right;
 }
 
-.tomas{
+.container1{
   margin: 10px;
   background-color: #dce2ed;
   border: 2px solid #dce2ed;
@@ -63,7 +63,7 @@ body{
   font-size: 16px;
 
 }
-.tomas:hover {
+.container1:hover {
   margin: 10px;
   background-color: #c7ced8;
   border: 2px solid #c7ced8;

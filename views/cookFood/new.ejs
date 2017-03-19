@@ -1,102 +1,90 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Foods</title>
+    <meta charset="UTF-8">
+    <title>Foods</title>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href='/stylesheets/reset.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<link rel="stylesheet" href='/stylesheets/reset.css'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<link rel="stylesheet" href='/stylesheets/new.css'>
-
-
+    <link rel="stylesheet" href='/stylesheets/new.css'>
 </head>
-  <body>
 
-<div class="background"></div>
+<body>
+
+    <div class="background"></div>
     <div class="container">
-      <div class="row-main">
-        <div class="main-login main-center">
+        <div class="row-main">
+            <div class="main-login main-center">
 
-          <form class="" method="POST" action="/new">
-                <h2> Create a menu </h2>
-            <div class="form-group">
-              <label for="name" class="cols-sm-2 control-label">Menu Name</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="name" id="name"  placeholder="Enter the meal name"/>
-                </div>
-              </div>
-            </div>
+                <form class="" method="POST" action="/new">
+                    <h2> Create a menu </h2>
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Menu Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter the meal name" />
+                            </div>
+                        </div>
+                    </div>
 
 
-            <div class="form-group">
-              <label for="maxNumberOfDiners" class="cols-sm-2 control-label">Number of portions</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="number" class="form-control" name="maxNumberOfDiners" id="maxNumberOfDiners"  placeholder="Enter the number of portions"/>
-                </div>
-              </div>
-            </div>
+                    <div class="form-group">
+                        <label for="maxNumberOfDiners" class="cols-sm-2 control-label">Number of portions</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="number" class="form-control" name="maxNumberOfDiners" id="maxNumberOfDiners" placeholder="Enter the number of portions" />
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="form-group">
-              <label for="date" class="cols-sm-2 control-label">Date</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                  <input type="date" class="form-control" name="date" id="date"  placeholder="Enter the date"/>
-                </div>
-              </div>
-            </div>
+                    <div class="form-group">
+                        <label for="date" class="cols-sm-2 control-label">Date</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="date" class="form-control" name="date" id="date" placeholder="Enter the date" />
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="form-group">
-              <label for="description" class="cols-sm-2 control-label">Description</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="description" id="description"  placeholder="Enter a description"/>
-                </div>
-              </div>
-            </div>
-<!--
-            <div class="form-group">
-              <label for="ingredients" class="cols-sm-2 control-label">Ingredients</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="ingredients" id="ingredients"  placeholder="ingredients"/>
-                </div>
-              </div>
-            </div>
--->
-            <div class="form-group">
-              <label for="location" class="cols-sm-2 control-label">Location</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="location" id="location"  placeholder="Location"/>
-                </div>
-              </div>
-            </div>
+                    <div class="form-group">
+                        <label for="description" class="cols-sm-2 control-label">Description</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="description" id="description" placeholder="Enter a description" />
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="form-group ">
-              <button type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                    <div class="form-group">
+                        <label for="location" class="cols-sm-2 control-label">Location</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="location" id="location" placeholder="Location" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <button type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                    </div>
+                </form>
             </div>
-          </form>
         </div>
-      </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="js/bootstrap.min.js"></script>
+</body>
 
-
-  </body>
 </html>

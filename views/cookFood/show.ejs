@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Foods</title>
+	<meta charset="UTF-8">
+	<title>Foods</title>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href='/stylesheets/reset.css'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<link rel="stylesheet" href='/stylesheets/show.css'>
-
+	<link rel="stylesheet" href='/stylesheets/reset.css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href='/stylesheets/show.css'>
 
 </head>
+
 <body>
 
-<div class="container">
-	<div class="span8">
+	<div class="container">
+		<div class="span8">
 
-		<div class="titlediv">
-        	<h1 id="title">List of Menus</h1>
-				</div>
-              <div class="recipe">
-        <% listOfFoods.forEach(function(food) { %>
-            <div class="tomas">
-							<div class="borja">
-
-               <h1 class="food"><%= food.name %></h1>
-               <p class="maxNumberOf"> For <%= food.maxNumberOfDiners %> diners</p>
-               <!--<p class="alctual-diners"> Actual Diners: Hacer query</p>-->
-               <p class="date"> Date: <%= food.date %></p>
-               <p class="description"> Description: <%= food.description %></p>
-               <p class="ingredients"> Ingredients: <%= food.ingredients %></p>
-               <div class="tags">
-               <button class="<%=food._id%>" id="btn-info" type="submit">Add</button>
-							 </div>
-               </div>
-          </div>
-       <% }); %>
-       </div>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="javascripts/main.js"></script>
+			<div class="titlediv">
+				<h1 id="title">List of Menus</h1>
+			</div>
+			<div class="recipe">
+				<% listOfFoods.forEach(function(food) { %>
+					<div class="container1">
+						<div class="container2">
+							<h1 class="food"><%= food.name %></h1>
+							<p class="maxNumberOf"> For
+								<%= food.maxNumberOfDiners %> diners</p>
+							<p class="date"> Date:
+								<%= food.date %>
+							</p>
+							<p class="description"> Description:
+								<%= food.description %>
+							</p>
+							<p class="ingredients"> Ingredients:
+								<%= food.ingredients %>
+							</p>
+							<div class="tags">
+								<button class="<%=food._id%>" id="btn-info" type="submit">Add</button>
+							</div>
+						</div>
+					</div>
+					<% }); %>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="javascripts/main.js"></script>
 
 </body>
+
 </html>

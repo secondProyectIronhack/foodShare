@@ -1,40 +1,40 @@
 {
-  "name": "proyecto2",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "nodemon ./bin/www",
-    "debug": "nodemon --inspect --debug ./bin/www"
-  },
-  "dependencies": {
-    "bcrypt": "^1.0.2",
-    "body-parser": "~1.16.0",
-    "connect-ensure-login": "^0.1.1",
-    "connect-mongo": "^1.3.2",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.0",
-    "ejs": "~2.5.5",
-    "express": "~4.14.1",
-    "express-ejs-layouts": "^2.2.0",
-    "express-session": "^1.15.1",
-    "moment": "^2.17.1",
-    "mongoose": "^4.8.3",
-    "morgan": "~1.7.0",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "serve-favicon": "~2.3.2"
-  },
-  "main": "app.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/secondProyectIronhack/foodShare.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/secondProyectIronhack/foodShare/issues"
-  },
-  "homepage": "https://github.com/secondProyectIronhack/foodShare#readme",
-  "description": ""
+    "name": "proyecto2",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon ./bin/www",
+        "debug": "nodemon --inspect --debug ./bin/www"
+    },
+    "dependencies": {
+        "bcrypt": "^1.0.2",
+        "body-parser": "~1.16.0",
+        "connect-ensure-login": "^0.1.1",
+        "connect-mongo": "^1.3.2",
+        "cookie-parser": "~1.4.3",
+        "debug": "~2.6.0",
+        "ejs": "~2.5.5",
+        "express": "~4.14.1",
+        "express-ejs-layouts": "^2.2.0",
+        "express-session": "^1.15.1",
+        "moment": "^2.17.1",
+        "mongoose": "^4.8.3",
+        "morgan": "~1.7.0",
+        "passport": "^0.3.2",
+        "passport-local": "^1.0.0",
+        "serve-favicon": "~2.3.2"
+    },
+    "main": "app.js",
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/secondProyectIronhack/foodShare.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/secondProyectIronhack/foodShare/issues"
+    },
+    "homepage": "https://github.com/secondProyectIronhack/foodShare#readme",
+    "description": ""
 }
