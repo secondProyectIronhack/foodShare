@@ -3,21 +3,32 @@
 
    <meta charset="UTF-8">
    <title>Document</title>
+   <link rel="stylesheet" href='/stylesheets/show.css'>
 </head>
 <body>
-   <h1><%=tittle%></h1>
+  <div class="container">
+  	<div class="span8">
+  <div class="titlediv">
+   <h1 id="title"><%=tittle%></h1>
+   </div>
+   <div class="recipe">
   <% listOfFoodsToEat.forEach(function(food) { %>
-       <div class="recipe">
-         <p class="food"> <%= food.name %></p>
+         <div class="tomas">
+         <div class="borja">
+         <h1 class="food"><%= food.name %></h1>
          <p class="maxNumberOf"> For: <%= food.maxNumberOfDiners %> persons</p>
-         <p class="alctual-diners"> Actual Diners: <%= food.maxNumberOfDiners %></p>
+         <!--<p class="alctual-diners"> Actual Diners: <%= food.maxNumberOfDiners %></p>-->
          <p class="date"> Date: <%=    food.date %></p>
          <p class="description"> Description: <%= food.description %></p>
          <p class="ingredients"> Ingredients: <%= food.ingredients %></p>
+         <p class="ingredients"> Address: <%= food.location %></p>
 
-      </div>
-      </a>
+        </div>
+        </div>
    <% }); %>
+   </div>
+ </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <script src="javascripts/main.js"></script>
